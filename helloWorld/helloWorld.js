@@ -6,6 +6,12 @@ if (Meteor.isClient) {
     counter: function () {
       return Session.get('counter');
     }
+	});
+	
+  Template.bye.helpers({
+	counter: function(){
+		return Session.get('counter');
+	}
   });
 
   Template.hello.events({
@@ -13,7 +19,16 @@ if (Meteor.isClient) {
       // increment the counter when button is clicked
       Session.set('counter', Session.get('counter') + 1);
     }
+	
   });
+	Template.bye.events({	
+	'click button': function(){
+		//decrement the counter when button is clicked
+		Session.set('counter', Session.get('counter') - 1);
+	}
+  });
+  
+	
 }
 
 if (Meteor.isServer) {
